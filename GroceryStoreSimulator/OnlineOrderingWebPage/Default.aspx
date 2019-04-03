@@ -25,6 +25,10 @@
             <h1>Big store low price!</h1>
         </div>
 
+        <div class="form-control">
+            <asp:ListBox ID="lbStores" runat="server"></asp:ListBox>
+        </div>
+
     </div>
     </form>
 </body>
