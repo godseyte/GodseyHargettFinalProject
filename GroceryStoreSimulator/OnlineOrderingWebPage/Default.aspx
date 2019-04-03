@@ -17,9 +17,14 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        <asp:Image ID="imgGroceries" runat="server" ImageUrl="~/App_Themes/DefaultTheme/Groceries.bmp" />
-        <h1>Big store low price!</h1>
+    <div id="wrap">
+        
+        
+        <div class="jumbotron">
+            <asp:Image ID="imgGroceries" runat="server" ImageUrl="~/App_Themes/DefaultTheme/Groceries.bmp" />
+            <h1>Big store low price!</h1>
+        </div>
+
     </div>
     </form>
 </body>
