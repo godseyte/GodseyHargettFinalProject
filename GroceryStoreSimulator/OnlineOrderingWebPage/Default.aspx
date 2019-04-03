@@ -2,8 +2,8 @@
 
 <!DOCTYPE html>
 
-<!-- Cyborg Bootstrap Theme CSS -->
-<link rel="stylesheet" href="cyborg.css">
+<!-- Flatly Min Bootstrap Theme CSS -->
+<link rel="stylesheet" href="flatly.min.css">
 <!-- Style Sheet -->
 <link rel="stylesheet" href="style.css" />
 <!-- jQuery library -->

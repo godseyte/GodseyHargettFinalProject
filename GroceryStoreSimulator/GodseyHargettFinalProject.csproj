@@ -249,7 +249,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Code\groceries.bmp" />
-    <Content Include="cyborg.css" />
+    <Content Include="flatly.min.css" />
     <Content Include="Images\Groceries.bmp" />
     <Content Include="style.css" />
     <None Include="Service References\CouponServiceReference\GroceryStoreSimulator.CouponServiceReference.Coupon.datasource">
