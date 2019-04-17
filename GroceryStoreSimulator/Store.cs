@@ -17,5 +17,21 @@ namespace GroceryStoreSimulator
 {
     class Store
     {
+        // Properties
+        private string mStoreName; // Name of Store
+        private string mStoreStatus; // Status of Store
+
+        // Accessors
+        public string storeName
+        {
+            get { return mStoreName; }
+            set { mStoreName = value; }
+        }
+
+        public string storeStatus
+        {
+            get { return mStoreStatus; }
+            set { mStoreStatus = value; }
+        }
     }
 }

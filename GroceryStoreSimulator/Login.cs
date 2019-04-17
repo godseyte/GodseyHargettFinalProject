@@ -21,6 +21,7 @@ namespace GroceryStoreSimulator
         private string mLogin; // Login Number/Name
         private Boolean mIsEmployee; // Is this Login an Employee Login?
 
+        // Accessors
         public string login {
             get { return mLogin; }
             set { mLogin = value; }
