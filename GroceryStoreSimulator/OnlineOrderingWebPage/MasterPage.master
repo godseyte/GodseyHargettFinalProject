@@ -13,25 +13,30 @@
 
 <html>
 <head runat="server">
-    <title></title>
+    <title>Online Ordering</title>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:ContentPlaceHolder id="HeaderPlaceholder" runat="server">
 
-            <div id="wrap">
+           <div id="wrap">
         
         
                 <div class="jumbotron">
                     <asp:Image ID="imgGroceries" runat="server" ImageUrl="~/App_Themes/DefaultTheme/Groceries.bmp" />
                     <h1>Big store low price!</h1>
+                    <h2><asp:ContentPlaceHolder ID="HeaderPlaceholder" runat="server"></asp:ContentPlaceHolder></h2>
                 </div>
 
+                <asp:ContentPlaceHolder id="ContentPlaceholder" runat="server">
+                </asp:ContentPlaceHolder>
+
+               
+
             </div>
-        </asp:ContentPlaceHolder>
+
     </div>
     </form>
 </body>
