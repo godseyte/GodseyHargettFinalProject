@@ -23,7 +23,7 @@ Start Page that both Users and Employees are greeted with when visiting the site
                 <h3>User Login</h3>
             </div>
 
-            <div class="card-body">
+            <div class="card-body form-group">
 
                 <div>
                     <h4>Loyalty Number</h4>
@@ -34,8 +34,10 @@ Start Page that both Users and Employees are greeted with when visiting the site
                 <div>
                     <h4>Store Selection</h4>
 
-                    <asp:ListBox ID="lbStores" runat="server" DataSourceID="GroceryStoreSimulator" DataTextField="Store" DataValueField="Store"></asp:ListBox>
+                    <asp:ListBox ID="lbStores" runat="server" CssClass="form-control custom-select-lg" DataSourceID="GroceryStoreSimulator" DataTextField="Store" DataValueField="Store"></asp:ListBox>
+                    
                     <asp:SqlDataSource ID="GroceryStoreSimulator" runat="server" ConnectionString="<%$ ConnectionStrings:GroceryStoreSimulatorConnectionString %>" SelectCommand="SELECT [Store] FROM [tStore]"></asp:SqlDataSource>
+                    
                 </div>
                 
                 <br />

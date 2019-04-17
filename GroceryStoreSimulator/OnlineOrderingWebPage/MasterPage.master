@@ -32,16 +32,19 @@ Master Page all other pages use as a template
            <div id="wrap">
         
                 <!-- Page Header -->
-                <div class="jumbotron">
+                <div class="card card-body bg-secondary">
+                    <div class="align-self-center">
+                        <div class="align-items-center custom-control-inline" style="margin: auto;">
+                            <asp:Image ID="imgBob" runat="server" ImageUrl="~/App_Themes/DefaultTheme/Bobrovsky-blue-jackets.png" Width="100px" Height="100px" />
+                            <h1 class="text-center">Bobrovsky's Emporium of Edible Goods</h1>
 
-                    <div class="custom-control-inline align-items-center" style="margin: auto;">
-                        <asp:Image ID="imgBob" runat="server" ImageUrl="~/App_Themes/DefaultTheme/Bobrovsky-blue-jackets.png" Width="100px" Height="100px" />
-                        <h1 class="text-center">Bobrovsky's Emporium of Edible Goods</h1>
+                        </div>
                     </div>
 
-                    
                     <h2><asp:ContentPlaceHolder ID="HeaderPlaceholder" runat="server"></asp:ContentPlaceHolder></h2>
                 </div>
+
+               <br />
 
                <!-- Page Contents are Loaded Here -->
                 <asp:ContentPlaceHolder id="ContentPlaceholder" runat="server">
