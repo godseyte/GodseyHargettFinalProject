@@ -51,6 +51,7 @@
     <Compile Include="Code\Empl.cs" />
     <Compile Include="Code\EmplName.cs" />
     <Compile Include="Code\Ingredients.cs" />
+    <Compile Include="Code\Login.cs" />
     <Compile Include="Code\Order.cs" />
     <Compile Include="Code\Product.cs" />
     <Compile Include="Code\ShoppingCart.cs" />
