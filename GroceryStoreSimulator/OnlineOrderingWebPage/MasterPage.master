@@ -1,4 +1,13 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+﻿<!--
+Tucker Godsey
+Final Project Spring 2019
+Due 5/1/2019
+Web Server Application Development IT3047 001
+
+Master Page all other pages use as a template
+-->
+
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
 
 <!DOCTYPE html>
 
@@ -14,8 +23,7 @@
 <html>
 <head runat="server">
     <title>Online Ordering</title>
-    <asp:ContentPlaceHolder id="head" runat="server">
-    </asp:ContentPlaceHolder>
+    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -23,13 +31,19 @@
 
            <div id="wrap">
         
-        
+                <!-- Page Header -->
                 <div class="jumbotron">
-                    <asp:Image ID="imgGroceries" runat="server" ImageUrl="~/App_Themes/DefaultTheme/Groceries.bmp" />
-                    <h1>Big store low price!</h1>
+
+                    <div class="custom-control-inline align-items-center" style="margin: auto;">
+                        <asp:Image ID="imgBob" runat="server" ImageUrl="~/App_Themes/DefaultTheme/Bobrovsky-blue-jackets.png" Width="100px" Height="100px" />
+                        <h1 class="text-center">Bobrovsky's Emporium of Edible Goods</h1>
+                    </div>
+
+                    
                     <h2><asp:ContentPlaceHolder ID="HeaderPlaceholder" runat="server"></asp:ContentPlaceHolder></h2>
                 </div>
 
+               <!-- Page Contents are Loaded Here -->
                 <asp:ContentPlaceHolder id="ContentPlaceholder" runat="server">
                 </asp:ContentPlaceHolder>
 
