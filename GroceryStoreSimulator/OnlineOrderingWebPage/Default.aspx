@@ -26,7 +26,8 @@
         </div>
 
         <div class="form-control">
-            <asp:ListBox ID="lbStores" runat="server"></asp:ListBox>
+            <asp:ListBox ID="lbStores" runat="server" DataSourceID="GroceryStoreSimulator" DataTextField="Store" DataValueField="Store"></asp:ListBox>
+            <asp:SqlDataSource ID="GroceryStoreSimulator" runat="server" ConnectionString="<%$ ConnectionStrings:GroceryStoreSimulatorConnectionString %>" SelectCommand="SELECT [Store] FROM [tStore]"></asp:SqlDataSource>
         </div>
 
     </div>
