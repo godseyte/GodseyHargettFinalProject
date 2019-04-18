@@ -20,11 +20,27 @@ namespace GroceryStoreSimulator
         // Properties
         private Login mLogin; // Login Info
         private Store mStore; // Selected Store
-        private List<Product> products; // List of Products
+        private List<Product> mProducts; // List of Products
         private string mOrderNumber; // Order Number
         private string mOrderStatus; // Status of Order
 
         // Accessors
-        
+        public Login login
+        {
+            get { return mLogin; }
+            set { mLogin = value; }
+        }
+
+        public Store store
+        {
+            get { return mStore; }
+            set { mStore = value; }
+        }
+
+        public List<Product> products
+        {
+            get { return mProducts; }
+            set { mProducts = value; }
+        }
     }
 }
