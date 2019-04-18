@@ -33,5 +33,12 @@ namespace GroceryStoreSimulator
             get { return mStoreStatus; }
             set { mStoreStatus = value; }
         }
+
+        // Constructor
+        public Store(string storeName, string storeStatus)
+        {
+            this.storeName = storeName;
+            this.storeStatus = storeStatus;
+        }
     }
 }

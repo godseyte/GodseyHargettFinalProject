@@ -32,5 +32,13 @@ namespace GroceryStoreSimulator
             get { return mIsEmployee; }
             set { mIsEmployee = value; }
         }
+
+        // Contstructor
+        public Login(string login, Boolean isEmployee)
+        {
+            this.login = login;
+            this.login = isEmployee;
+        }
     }
+
 }

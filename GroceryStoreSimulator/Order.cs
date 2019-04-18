@@ -20,7 +20,7 @@ namespace GroceryStoreSimulator
         // Properties
         private Login mLogin; // Login Info
         private Store mStore; // Selected Store
-        //TODO: Add List<Product> products
+        private List<Product> products; // List of Products
         private string mOrderNumber; // Order Number
         private string mOrderStatus; // Status of Order
 
