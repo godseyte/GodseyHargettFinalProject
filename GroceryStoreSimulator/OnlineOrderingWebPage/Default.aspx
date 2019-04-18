@@ -41,7 +41,7 @@ Start Page that both Users and Employees are greeted with when visiting the site
                 </div>
                 
                 <br />
-                <asp:Button ID="btnLoginUser" runat="server" Text="Login" CssClass="btn btn-primary" />
+                <asp:Button ID="btnLoginUser" runat="server" Text="Login" CssClass="btn btn-primary" OnClick="btnLoginUser_Click" />
 
             </div>
 
