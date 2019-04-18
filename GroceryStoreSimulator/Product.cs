@@ -34,5 +34,10 @@ namespace GroceryStoreSimulator
         }
 
         //Constructor
+        public Product(string productName, int quantity)
+        {
+            this.productName = productName;
+            this.quantity = quantity;
+        }
     }
 }
