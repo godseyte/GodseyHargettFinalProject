@@ -106,7 +106,7 @@ namespace GroceryStoreSimulator {
                             if (Config.executeFailSafeOptions) {
                                 ProductPriceHist.CopyFromFromProductTableIntoProductPriceHist(Config.startDate); // Config.earliestPossibleDate);     // Fail-safe strategy
                                 Empl.MakeAllEmplAvailableToWork(Config.startDate); // Config.earliestPossibleDate);                                   // Fail-safe strategy
-                                Store.MakeAllStoreOpenForBusiness(Config.startDate); // Config.earliestPossibleDate);                                 // Fail-safe strategy
+                                GroceryStoreSimulator.Code.Store.MakeAllStoreOpenForBusiness(Config.startDate); // Config.earliestPossibleDate);                                 // Fail-safe strategy
                             }
                             sg.StartTransactionSimulation(numOfTransactionsToAdd, Config.random, txtResults, lblStatus);
                         } catch (Exception ex) {
@@ -393,7 +393,7 @@ namespace GroceryStoreSimulator {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnLookUpProduct_Click(object sender, EventArgs e) {
-            Product.DisplayProductInfo(txtProduct.Text, txtProductInfo);
+            GroceryStoreSimulator.Code.Product.DisplayProductInfo(txtProduct.Text, txtProductInfo);
         }
 
         private void FillDatasets() {

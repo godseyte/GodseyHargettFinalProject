@@ -160,7 +160,7 @@ namespace GroceryStoreSimulator {
                 // This could fail if the record was not added to tProductPriceHist...
                 productPriceHistID = (int)cmd.Parameters["ProductPriceHistID"].Value;
                 String tmp;
-                Product.FormatProductIDForDisplay(productID, out tmp);
+                GroceryStoreSimulator.Code.Product.FormatProductIDForDisplay(productID, out tmp);
                 Write(txtInfo, tmp);
             } catch (Exception ex) {
                 result = false;
