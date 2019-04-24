@@ -10,7 +10,7 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
     }
 
     // User Login
@@ -18,7 +18,7 @@ public partial class _Default : System.Web.UI.Page
     {
         // Gather the input data and use it to create an Order server object.
 
-        // Create new Order object
-        //Order newOrder = new Order();
+        // Create new Login object
+        Login newLogin = new Login(txtLoyaltyNumberInput.Text, false);
     }
 }
