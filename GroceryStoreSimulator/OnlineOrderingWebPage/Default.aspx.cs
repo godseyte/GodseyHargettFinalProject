@@ -18,7 +18,20 @@ public partial class _Default : System.Web.UI.Page
     {
         // Gather the input data and use it to create an Order server object.
 
+        // Verify the Loyalty Number exists
+        if(txtLoyaltyNumberInput.Text.Trim() != "")
+        {
+            //TODO: Check the database for the Loyalty Number
+        } else
+        {
+            // Throw Empty Loyalty Number Error
+            lblError.Visible = true;
+            lblError.Text = "Please input a Loyalty Number";
+        }
+
+
         // Create new Login object
         Login newLogin = new Login(txtLoyaltyNumberInput.Text, false);
+
     }
 }

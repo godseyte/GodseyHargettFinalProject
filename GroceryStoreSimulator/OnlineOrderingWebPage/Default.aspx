@@ -38,9 +38,12 @@ Start Page that both Users and Employees are greeted with when visiting the site
                     
                     <asp:SqlDataSource ID="GroceryStoreSimulator" runat="server" ConnectionString="<%$ ConnectionStrings:GroceryStoreSimulatorConnectionString %>" SelectCommand="SELECT [Store] FROM [tStore]"></asp:SqlDataSource>
                     
+                    <asp:Label ID="lblError" runat="server" Text="ERROR MESSAGE HERE" Visible="False" CssClass="text-danger"></asp:Label>
                 </div>
                 
                 <br />
+
+                
                 <asp:Button ID="btnLoginUser" runat="server" Text="Login" CssClass="btn btn-primary" OnClick="btnLoginUser_Click" />
 
             </div>
