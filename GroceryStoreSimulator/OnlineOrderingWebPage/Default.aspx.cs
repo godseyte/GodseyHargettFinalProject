@@ -67,9 +67,27 @@ public partial class _Default : System.Web.UI.Page
             {
                 if (returnedData.Rows[0][0].ToString().Trim() == inputLoyaltyNumber)
                 {
-                    // Continue after Verifying
-                    lblError.Text = returnedData.Rows[0][0].ToString();
-                    lblError.Visible = true;
+                    // Check if a store is selected
+                    if (lbStores.SelectedValue != null)
+                    {
+                        // Create the login and selected store for the session order
+                        Order order = new Order();
+                        order = (Order)Session["order"];
+                        order.login = new Login(inputLoyaltyNumber, false);
+                        order.store = new Store(lbStores.SelectedValue);
+                        Session["order"] = order;
+
+                        // Redirect to Order page
+                        Response.Redirect("http://localhost:41711/Product.aspx");
+                    }
+                    else
+                    {
+                        // Show Incorrect Loyalty Number Error
+                        lblError.Text = "Please Select a Store";
+                        lblError.Visible = true;
+                    }
+
+                    
                 }
                 else
                 {
@@ -88,7 +106,7 @@ public partial class _Default : System.Web.UI.Page
         else
         {
             // Show Empty Loyalty Number Error
-            lblError.Text = "Please input a Loyalty Number";
+            lblError.Text = "Please Input a Loyalty Number";
             lblError.Visible = true;
         }
 

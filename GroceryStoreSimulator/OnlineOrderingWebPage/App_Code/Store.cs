@@ -25,16 +25,9 @@ public class Store
         set { mStoreName = value; }
     }
 
-    public string storeStatus
-    {
-        get { return mStoreStatus; }
-        set { mStoreStatus = value; }
-    }
-
     // Constructor
-    public Store(string storeName, string storeStatus)
+    public Store(string storeName)
     {
         this.storeName = storeName;
-        this.storeStatus = storeStatus;
     }
 }
