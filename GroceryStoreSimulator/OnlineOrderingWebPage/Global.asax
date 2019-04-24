@@ -31,9 +31,6 @@
     {
         // Code that runs when a new session is started
         //Create a session object for the store selected on the landing page.
-        string selectedStore = "";
-        Session["selectedStore"] = selectedStore;
-
         Session["order"] = new Order();
     }
 

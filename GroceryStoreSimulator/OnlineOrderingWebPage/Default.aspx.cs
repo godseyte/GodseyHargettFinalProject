@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -13,20 +16,80 @@ public partial class _Default : System.Web.UI.Page
         
     }
 
+    // Query GroceryStoreSimulator and return the reader
+    private DataTable QueryGroceryStoreSimulator (string query)
+    {
+        // New SQL Connection
+        SqlConnection cnn;
+
+        // New Connection String
+        string connetionString = ConfigurationManager.ConnectionStrings["GroceryStoreSimulatorConnectionString"].ConnectionString;
+
+        // Instantiate the SQL Connection with Connection String
+        cnn = new SqlConnection(connetionString);
+
+        // Create a SqlCommand with the input Query
+        SqlCommand command = new SqlCommand(query, cnn);
+
+        cnn.Open();
+
+        // Create a SqlDataReader and tie it to the query
+        //SqlDataReader reader = command.ExecuteReader();
+
+        // Create a DataTable to store all data and a SqlDataAdapter to fill the DataTable
+        DataTable dataTable = new DataTable();
+
+        // Fill the DataTable
+        //da.Fill(dataTable);
+        dataTable.Load(command.ExecuteReader());
+
+        cnn.Close();
+
+        return dataTable;
+    }
+
     // User Login
     protected void btnLoginUser_Click(object sender, EventArgs e)
     {
         // Gather the input data and use it to create an Order server object.
 
+        // Trim input value and save it to a variable
+        string inputLoyaltyNumber = txtLoyaltyNumberInput.Text.Trim();
+
         // Verify the Loyalty Number exists
-        if(txtLoyaltyNumberInput.Text.Trim() != "")
+        if (inputLoyaltyNumber != "")
         {
             //TODO: Check the database for the Loyalty Number
-        } else
+            DataTable returnedData = QueryGroceryStoreSimulator("SELECT LoyaltyNumber FROM tLoyalty WHERE LoyaltyNumber = '" + inputLoyaltyNumber + "'");
+
+            // Check the DataTable to see if the Loyalty Number is in it
+            if (returnedData.Rows.Count > 0)
+            {
+                if (returnedData.Rows[0][0].ToString().Trim() == inputLoyaltyNumber)
+                {
+                    // Continue after Verifying
+                    lblError.Text = returnedData.Rows[0][0].ToString();
+                    lblError.Visible = true;
+                }
+                else
+                {
+                    // Show Incorrect Loyalty Number Error
+                    lblError.Text = "Incorrect Loyalty Number";
+                    lblError.Visible = true;
+                }
+            }
+            else
+            {
+                // Show Incorrect Loyalty Number Error
+                lblError.Text = "Incorrect Loyalty Number";
+                lblError.Visible = true;
+            }
+        }
+        else
         {
-            // Throw Empty Loyalty Number Error
-            lblError.Visible = true;
+            // Show Empty Loyalty Number Error
             lblError.Text = "Please input a Loyalty Number";
+            lblError.Visible = true;
         }
 
 
