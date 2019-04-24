@@ -42,5 +42,18 @@ namespace GroceryStoreSimulator
             get { return mProducts; }
             set { mProducts = value; }
         }
+
+        public string orderNumber
+        {
+            get { return mOrderNumber; }
+            set { mOrderNumber = value; }
+        }
+
+        public string orderStatus
+        {
+            get { return mOrderStatus; }
+            set { mOrderStatus = value; }
+        }
+
     }
 }
