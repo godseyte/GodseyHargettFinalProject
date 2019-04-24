@@ -14,5 +14,6 @@
             </asp:TableRow>
         </asp:Table>
     </div>
+    <asp:SqlDataSource ID="dsProductsFromSelectedStore" runat="server"></asp:SqlDataSource>
 </asp:Content>
 
