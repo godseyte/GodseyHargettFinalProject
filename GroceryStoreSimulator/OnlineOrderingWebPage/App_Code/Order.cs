@@ -53,13 +53,9 @@ public class Order
         set { mOrderStatus = value; }
     }
 
-    // Constructor
-    public Order(Login login, Store store, List<Product> products, string orderNumber, string orderStatus)
+    // Constructors
+    public Order()
     {
-        this.login = login;
-        this.store = store;
-        this.products = products;
-        this.orderNumber = orderNumber;
-        this.mOrderStatus = orderStatus;
+
     }
 }

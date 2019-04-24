@@ -33,6 +33,8 @@
         //Create a session object for the store selected on the landing page.
         string selectedStore = "";
         Session["selectedStore"] = selectedStore;
+
+        Session["order"] = new Order();
     }
 
     void Session_End(object sender, EventArgs e) 
