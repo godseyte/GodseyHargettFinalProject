@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+ * Tucker Godsey
+ * Final Assignment
+ * Due 5/1/2019
+ * Web Server Application Development IT3047 001
+ * 
+ * Logins for both Users and Employees
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
