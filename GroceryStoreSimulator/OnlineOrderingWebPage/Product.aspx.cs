@@ -10,5 +10,10 @@ public partial class Default2 : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //dsProductsFromSelectedStore.Select("");
+        Order order = new Order();
+        order = (Order)Session["order"];
+        lblStore.Text = order.store.storeName;
+
+        //Request.QueryString["SelectedStore"] = order.store.storeName;
     }
 }

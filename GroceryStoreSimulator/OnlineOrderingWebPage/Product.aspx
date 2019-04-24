@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Product.aspx.cs" Inherits="Default2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderPlaceholder" Runat="Server">
-    Products
+    Products - <asp:Label ID="lblStore" runat="server" Text=""></asp:Label>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceholder" Runat="Server">
@@ -9,7 +9,7 @@
     <div class="table-bordered">
         <asp:ListView ID="lvProductsFromSelectedStore" runat="server" DataSourceID="dsProductsFromSelectedStore" GroupItemCount="3">
             <AlternatingItemTemplate>
-                <td runat="server" style="background-color: #FFFFFF;color: #284775;">Name:
+                <td runat="server" style="background-color: #FFF8DC;">Name:
                     <asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' />
                     <br />
                     Manufacturer:
@@ -27,7 +27,7 @@
                 </td>
             </AlternatingItemTemplate>
             <EditItemTemplate>
-                <td runat="server" style="background-color: #999999;">Name:
+                <td runat="server" style="background-color: #008A8C; color: #FFFFFF;">Name:
                     <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>' />
                     <br />
                     Manufacturer:
@@ -86,7 +86,7 @@
                 </td>
             </InsertItemTemplate>
             <ItemTemplate>
-                <td runat="server" style="background-color: #E0FFFF;color: #333333;">Name:
+                <td runat="server" style="background-color: #DCDCDC; color: #000000;">Name:
                     <asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' />
                     <br />
                     Manufacturer:
@@ -114,10 +114,12 @@
                         </td>
                     </tr>
                     <tr runat="server">
-                        <td runat="server" style="text-align: center;background-color: #5D7B9D;font-family: Verdana, Arial, Helvetica, sans-serif;color: #FFFFFF">
+                        <td runat="server" style="text-align: center;background-color: #CCCCCC; font-family: Verdana, Arial, Helvetica, sans-serif;color: #000000">
                             <asp:DataPager ID="DataPager1" runat="server" PageSize="12">
                                 <Fields>
-                                    <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" />
+                                    <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
+                                    <asp:NumericPagerField />
+                                    <asp:NextPreviousPagerField ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
                                 </Fields>
                             </asp:DataPager>
                         </td>
@@ -125,7 +127,7 @@
                 </table>
             </LayoutTemplate>
             <SelectedItemTemplate>
-                <td runat="server" style="background-color: #E2DED6;font-weight: bold;color: #333333;">Name:
+                <td runat="server" style="background-color: #008A8C; font-weight: bold;color: #FFFFFF;">Name:
                     <asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' />
                     <br />
                     Manufacturer:
@@ -149,7 +151,7 @@
 INNER JOIN [tProductPriceHist] ON [tProductPriceHist].[ProductID] = [vProductInfo].ProductID
 INNER JOIN [tStore] ON [tStore].[StoreID] = [tProductPriceHist].[StoreID] WHERE Store = @StoreName;">
         <SelectParameters>
-            <asp:Parameter DefaultValue="Batavia" Name="StoreName" />
+            <asp:QueryStringParameter DefaultValue="" Name="StoreName" QueryStringField="SelectedStore" />
         </SelectParameters>
     </asp:SqlDataSource>
     <!--GridView just to test that the data is being called correctly-->
