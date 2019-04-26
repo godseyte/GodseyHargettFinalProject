@@ -151,21 +151,8 @@
 INNER JOIN [tProductPriceHist] ON [tProductPriceHist].[ProductID] = [vProductInfo].ProductID
 INNER JOIN [tStore] ON [tStore].[StoreID] = [tProductPriceHist].[StoreID] WHERE Store = @StoreName;">
         <SelectParameters>
-            <asp:QueryStringParameter DefaultValue="" Name="StoreName" QueryStringField="SelectedStore" />
+            <asp:ControlParameter ControlID="lblStore" DefaultValue="" Name="StoreName" PropertyName="Text" />
         </SelectParameters>
     </asp:SqlDataSource>
-    <!--GridView just to test that the data is being called correctly-->
-    <!--
-    <div class="table-responsive-md">
-    <asp:GridView ID="gvProductsFromSelectedStore" runat="server" DataSourceID="dsProductsFromSelectedStore" AutoGenerateColumns="False">
-        <Columns>
-            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
-            <asp:BoundField DataField="Manufacturer" HeaderText="Manufacturer" SortExpression="Manufacturer" />
-            <asp:BoundField DataField="Brand" HeaderText="Brand" SortExpression="Brand" />
-            <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" />
-            <asp:BoundField DataField="PricePerSellableUnit" HeaderText="PricePerSellableUnit" SortExpression="PricePerSellableUnit" />
-        </Columns>
-    </asp:GridView>
-    </div>------------------------>
 </asp:Content>
 
