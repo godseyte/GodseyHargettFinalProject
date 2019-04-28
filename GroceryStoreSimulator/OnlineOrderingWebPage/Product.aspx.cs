@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+ * Alex Hargett
+ * Final Assignment
+ * Due 5/1/2019
+ * Web Server Application Development IT3047 001
+ * 
+ * Shopping Cart
+ */
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
