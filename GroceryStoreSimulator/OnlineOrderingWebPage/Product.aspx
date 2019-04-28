@@ -6,42 +6,51 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceholder" Runat="Server">
     <!--Table to hold all the products for a store-->
-    <div class="table-bordered" style="position: relative; width: 75%; float: left; display: inline-block; right: -3%">
-        <asp:ListView ID="lvProductsFromSelectedStore" runat="server" DataSourceID="dsProductsFromSelectedStore" GroupItemCount="3" 
+    <div class="table-bordered" style="position: relative; width: 75%; float: left; display: inline-block; right: -3%;">
+        <asp:ListView ID="lvProductsFromSelectedStore" runat="server" DataSourceID="dsProductsFromSelectedStore" GroupItemCount="5" 
             DataKeyNames="Name, PricePerSellableUnit" OnSelectedIndexChanged="lvProductsFromSelectedStore_SelectedIndexChanged" 
             OnItemDataBound="lvProductsFromSelectedStore_ItemDataBound">
             <AlternatingItemTemplate>
-                <td runat="server" style="">Name
+                <td runat="server" style="text-align: center;"><!--Name-->
                     <asp:Button ID="btnSelect" runat="server" Text='<%# Eval("Name") %>' Style="border: none;background: none;" CommandName ="Select"/>
                     <br />
+                    <!--
                     Manufacturer:
                     <asp:Label ID="ManufacturerLabel" runat="server" Text='<%# Eval("Manufacturer") %>' />
                     <br />
-                    Brand:
+                    -->
+                    <!--Brand:-->
                     <asp:Label ID="BrandLabel" runat="server" Text='<%# Eval("Brand") %>' />
                     <br />
+                    <!--
                     Description:
                     <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>' />
                     <br />
-                    PricePerSellableUnit:
+                    -->
+                    <!--PricePerSellableUnit:-->
                     <asp:Label ID="PricePerSellableUnitLabel" runat="server" Text='<%# Eval("PricePerSellableUnit") %>' />
                     <br />
+                    <asp:TextBox ID="tbQuantity" runat="server" style="width:22px; height: 22px"></asp:TextBox>
                 </td>
             </AlternatingItemTemplate>
             <EditItemTemplate>
-                <td runat="server" style="">Name:
+                <td runat="server" style="text-align: center;"><!--Name:-->
                     <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>' />
                     <br />
+                    <!--
                     Manufacturer:
                     <asp:TextBox ID="ManufacturerTextBox" runat="server" Text='<%# Bind("Manufacturer") %>' />
                     <br />
-                    Brand:
+                    -->
+                    <!--Brand:-->
                     <asp:TextBox ID="BrandTextBox" runat="server" Text='<%# Bind("Brand") %>' />
                     <br />
+                    <!--
                     Description:
                     <asp:TextBox ID="DescriptionTextBox" runat="server" Text='<%# Bind("Description") %>' />
                     <br />
-                    PricePerSellableUnit:
+                    -->
+                    <!--PricePerSellableUnit:-->
                     <asp:TextBox ID="PricePerSellableUnitTextBox" runat="server" Text='<%# Bind("PricePerSellableUnit") %>' />
                     <br />
                     <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
@@ -51,7 +60,7 @@
                 </td>
             </EditItemTemplate>
             <EmptyDataTemplate>
-                <table runat="server" style="">
+                <table runat="server" style="text-align: center;">
                     <tr>
                         <td>No data was returned.</td>
                     </tr>
@@ -66,19 +75,23 @@
                 </tr>
             </GroupTemplate>
             <InsertItemTemplate>
-                <td runat="server" style="">Name:
+                <td runat="server" style="text-align: center;"><!--Name:-->
                     <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>' />
                     <br />
+                    <!--
                     Manufacturer:
                     <asp:TextBox ID="ManufacturerTextBox" runat="server" Text='<%# Bind("Manufacturer") %>' />
                     <br />
-                    Brand:
+                    -->
+                    <!--Brand:-->
                     <asp:TextBox ID="BrandTextBox" runat="server" Text='<%# Bind("Brand") %>' />
                     <br />
+                    <!--
                     Description:
                     <asp:TextBox ID="DescriptionTextBox" runat="server" Text='<%# Bind("Description") %>' />
                     <br />
-                    PricePerSellableUnit:
+                    -->
+                    <!--PricePerSellableUnit:-->
                     <asp:TextBox ID="PricePerSellableUnitTextBox" runat="server" Text='<%# Bind("PricePerSellableUnit") %>' />
                     <br />
                     <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
@@ -88,36 +101,40 @@
                 </td>
             </InsertItemTemplate>
             <ItemTemplate>
-                <td runat="server" style="">Name:
+                <td runat="server" style="text-align: center;"><!--Name:-->
                     <asp:Button ID="btnSelect" runat="server" Text='<%# Eval("Name") %>' Style="border: none;background: none;" CommandName ="Select"/>
                     <br />
+                    <!--
                     Manufacturer:
                     <asp:Label ID="ManufacturerLabel" runat="server" Text='<%# Eval("Manufacturer") %>' />
                     <br />
-                    Brand:
+                    -->
+                    <!--Brand:-->
                     <asp:Label ID="BrandLabel" runat="server" Text='<%# Eval("Brand") %>' />
                     <br />
+                    <!--
                     Description:
                     <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>' />
                     <br />
-                    PricePerSellableUnit:
+                    -->
+                    <!--PricePerSellableUnit:-->
                     <asp:Label ID="PricePerSellableUnitLabel" runat="server" Text='<%# Eval("PricePerSellableUnit") %>' />
                     <br />
                 </td>
             </ItemTemplate>
             <LayoutTemplate>
-                <table runat="server">
+                <table runat="server" style="">
                     <tr runat="server">
-                        <td runat="server">
-                            <table id="groupPlaceholderContainer" runat="server" border="0" style="">
+                        <td runat="server" style="">
+                            <table id="groupPlaceholderContainer" runat="server" border="0" style="width: 100%; height: 500px;table-layout: fixed">
                                 <tr id="groupPlaceholder" runat="server">
                                 </tr>
                             </table>
                         </td>
                     </tr>
                     <tr runat="server">
-                        <td runat="server" style="">
-                            <asp:DataPager ID="DataPager1" runat="server" PageSize="12">
+                        <td runat="server" style="text-align: center;">
+                            <asp:DataPager ID="DataPager1" runat="server" PageSize="25">
                                 <Fields>
                                     <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
                                     <asp:NumericPagerField />
@@ -129,19 +146,23 @@
                 </table>
             </LayoutTemplate>
             <SelectedItemTemplate>
-                <td runat="server" style="">Name:
-                    <asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' />
+                <td runat="server" style="text-align: center;"><!--Name:-->
+                    <asp:Button ID="btnSelect" runat="server" Text='<%# Eval("Name") %>' Style="border: none;background: none;" CommandName ="Select"/>
                     <br />
+                    <!--
                     Manufacturer:
                     <asp:Label ID="ManufacturerLabel" runat="server" Text='<%# Eval("Manufacturer") %>' />
                     <br />
-                    Brand:
+                    -->
+                    <!--Brand:-->
                     <asp:Label ID="BrandLabel" runat="server" Text='<%# Eval("Brand") %>' />
                     <br />
+                    <!--
                     Description:
                     <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>' />
                     <br />
-                    PricePerSellableUnit:
+                    -->
+                    <!--PricePerSellableUnit:-->
                     <asp:Label ID="PricePerSellableUnitLabel" runat="server" Text='<%# Eval("PricePerSellableUnit") %>' />
                     <br />
                 </td>
