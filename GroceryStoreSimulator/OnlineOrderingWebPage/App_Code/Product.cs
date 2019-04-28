@@ -18,6 +18,7 @@ public class Product
 {
     // Properties
     private string mProductName; //The name of the product
+    private double mPricePerSellableUnit; //The price of the product
     private int mQuantity; //The amount of said item
 
     //Getters and Setters
@@ -27,6 +28,12 @@ public class Product
         set { mProductName = value; }
     }
 
+    public double pricePerSellableUnit
+    {
+        get { return mPricePerSellableUnit; }
+        set { mPricePerSellableUnit = value; }
+    }
+
     public int quantity
     {
         get { return mQuantity; }
@@ -34,9 +41,14 @@ public class Product
     }
 
     //Constructor
-    public Product(string productName, int quantity)
+    public Product(string productName, double pricePerSellableUnit, int quantity)
     {
         this.productName = productName;
+        this.pricePerSellableUnit = pricePerSellableUnit;
         this.quantity = quantity;
+    }
+    //Empty Contructor
+    public Product()
+    {
     }
 }
