@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceholder" Runat="Server">
     <!--Table to hold all the products for a store-->
-    <div class="table-bordered" style="width: 80%; float: left;">
+    <div class="table-bordered" style="position: relative; width: 75%; float: left; display: inline-block; right: -3%">
         <asp:ListView ID="lvProductsFromSelectedStore" runat="server" DataSourceID="dsProductsFromSelectedStore" GroupItemCount="3" 
             DataKeyNames="Name, PricePerSellableUnit" OnSelectedIndexChanged="lvProductsFromSelectedStore_SelectedIndexChanged" 
             OnItemDataBound="lvProductsFromSelectedStore_ItemDataBound">
@@ -148,9 +148,12 @@
             </SelectedItemTemplate>
         </asp:ListView>
     </div>
-    <div class="list-group-item d-flex justify-content-between align-items-center">
-        <asp:BulletedList ID="blShoppingCart" runat="server" CssClass="list-group" Style="float:left; list-style: none;">
+    
+    <!--List that will act as the shopping cart for the webpage-->
+    <div class="card" style="display: table; text-align: center; float:right; height: 500px; width: 18%;">
+        <asp:BulletedList ID="blShoppingCart" runat="server" CssClass="list-group" Style="display:table-cell; text-align: left; float:left; list-style: none;">
         </asp:BulletedList>
+        <asp:Button ID="btnCheckout" runat="server" Text="Checkout" CssClass="btn-primary" Style="display:table-cell; position:absolute; bottom: 10px; left: 25%; width: 50%; height: 30px;" OnClick="btnCheckout_Click"/>
     </div>
     <!--DataSource that uses a select statement to grab all products from the selected store-->
     <asp:SqlDataSource ID="dsProductsFromSelectedStore" runat="server" ConnectionString="<%$ ConnectionStrings:GroceryStoreSimulatorConnectionString %>" SelectCommand="SELECT DISTINCT [Name], [Manufacturer], [Brand], [Description], [PricePerSellableUnit] FROM [vProductInfo] 
