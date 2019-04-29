@@ -40,7 +40,7 @@ public partial class _Default : System.Web.UI.Page
         if (inputLoyaltyNumber != "")
         {
             //TODO: Check the database for the Loyalty Number
-            DataTable returnedData = QueryGroceryStoreSimulator("SELECT LoyaltyNumber FROM tLoyalty WHERE LoyaltyNumber = '" + inputLoyaltyNumber + "'");
+            DataTable returnedData =  QueryGroceryStoreSimulator.QueryGroceryStoreSimulatorDataTable("SELECT LoyaltyNumber FROM tLoyalty WHERE LoyaltyNumber = '" + inputLoyaltyNumber + "'");
 
             // Check the DataTable to see if the Loyalty Number is in it
             if (returnedData.Rows.Count > 0)

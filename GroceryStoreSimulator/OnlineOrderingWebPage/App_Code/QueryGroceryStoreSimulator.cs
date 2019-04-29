@@ -9,9 +9,9 @@ using System.Web;
 /// <summary>
 /// Summary description for QueryGroceryStoreSimulator
 /// </summary>
-public class QueryGroceryStoreSimulator
+public static class QueryGroceryStoreSimulator
 {
-    private DataTable QueryGroceryStoreSimulatorDataTable(string query)
+    public static DataTable QueryGroceryStoreSimulatorDataTable(string query)
     {
         // New SQL Connection
         SqlConnection cnn;
