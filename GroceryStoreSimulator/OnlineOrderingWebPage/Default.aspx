@@ -36,7 +36,7 @@ Start Page that both Users and Employees are greeted with when visiting the site
 
                     <asp:ListBox ID="lbStores" runat="server" CssClass="form-control custom-select-lg" DataSourceID="GroceryStoreSimulator" DataTextField="Store" DataValueField="Store"></asp:ListBox>
                     
-                    <asp:SqlDataSource ID="GroceryStoreSimulator" runat="server" ConnectionString="<%$ ConnectionStrings:GroceryStoreSimulatorConnectionString %>" SelectCommand="SELECT s.Store FROM tStore as s
+                    <asp:SqlDataSource ID="GroceryStoreSimulator" runat="server" ConnectionString="<%$ ConnectionStrings:GroceryStoreSimulatorConnectionString %>" SelectCommand="SELECT DISTINCT s.Store FROM tStore as s
 INNER JOIN tProductPriceHist as pph ON pph.StoreID = s.StoreID"></asp:SqlDataSource>
                     
                     <asp:Label ID="lblError" runat="server" Text="ERROR MESSAGE HERE" Visible="False" CssClass="text-danger"></asp:Label>
