@@ -56,6 +56,10 @@ public class Order
     // Constructors
     public Order()
     {
-
+        mLogin = new Login("", false);
+        mStore = new Store("");
+        mProducts = new List<Product>();
+        mOrderNumber = "";
+        mOrderStatus = "";
     }
 }
