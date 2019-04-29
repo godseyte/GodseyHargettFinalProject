@@ -19,10 +19,11 @@ public partial class Default2 : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //dsProductsFromSelectedStore.Select("");
-        //Order order = new Order();
-        //order = (Order)Session["order"];
-        //lblStore.Text = order.store.storeName;
-
+        Order order = new Order();
+        order = (Order)Session["order"];
+        lblStoreName.Text = order.store.storeName;
+        string storeName = lblStoreName.Text.Trim();
+        //dsProductsFromSelectedStore.SelectParameters.Add("StoreName", DbType.String, storeName);
     }
 
     //This method is triggerd whenever an item is clicked in the listview we will use
@@ -30,13 +31,10 @@ public partial class Default2 : System.Web.UI.Page
     protected void lvProductsFromSelectedStore_SelectedIndexChanged(object sender, EventArgs e)
     {
         //grab the name of the store that is clicked
-        string pricePerSellableUnit = ConvertToCurrency(lvProductsFromSelectedStore.DataKeys[lvProductsFromSelectedStore.SelectedIndex].Values["PricePerSellableUnit"].ToString());
+        //string pricePerSellableUnit = ConvertToCurrency(lvProductsFromSelectedStore.DataKeys[lvProductsFromSelectedStore.SelectedIndex].Values["PricePerSellableUnit"].ToString());
         //create a listItem that can be added to an html control
-        TextBox tbQuantity = new TextBox();
-        tbQuantity.Style.Add("width", "22px");
-        tbQuantity.Style.Add("heigth", "22px");
-        ListItem shopingList = new ListItem(lvProductsFromSelectedStore.SelectedValue.ToString() + " " + pricePerSellableUnit);
-        blShoppingCart.Items.Add(shopingList);//add to the shopping cart list on the html page
+        //ListItem shopingList = new ListItem(lvProductsFromSelectedStore.SelectedValue.ToString() + " " + pricePerSellableUnit);
+        //blShoppingCart.Items.Add(shopingList);//add to the shopping cart list on the html page
     }
 
     //This method allows you to alter the data gathered by the datasource before it is presented
@@ -49,6 +47,18 @@ public partial class Default2 : System.Web.UI.Page
         //This updates the tile that is altered in the above code
         DataRowView rowView = e.Item.DataItem as DataRowView;
         string pricePerSellableUnit = rowView["PricePerSellableUnit"].ToString();
+    }
+
+    protected void lvProductsFromSelectedStore_OnItemCommand(object sender, ListViewCommandEventArgs e)
+    {
+        Button btnProductName = (Button)e.Item.FindControl("btnSelect");
+        Label lblProductName = new Label();
+        lblProductName.Text = btnProductName.Text;
+        Label lblPricePerSellableUnit = (Label)e.Item.FindControl("PricePerSellableUnitLabel");
+        TextBox txtQuantity = (TextBox)e.Item.FindControl("txtQuantity");
+
+        string shopingList = lblProductName.Text + " " + lblPricePerSellableUnit.Text + " x" + txtQuantity.Text;
+        blShoppingCart.Items.Add(shopingList);//add to the shopping cart list on the html page
     }
 
     //This method is to convert the string of price to a US curency format
@@ -65,26 +75,27 @@ public partial class Default2 : System.Web.UI.Page
     //Button to procced to the checkout/order page
     protected void btnCheckout_Click(object sender, EventArgs e)
     {
-        /*
         List<Product> products = new List<Product>();//list of products to go in the orderpage
         string[] shoppingCart = new string[blShoppingCart.Items.Count];//string for the items in the shoping cart
-        blShoppingCart.Items.CopyTo(shoppingCart, 0);//takes the bulleted list and copies it to an array
+        for (int i = 0; i < blShoppingCart.Items.Count; i++)
+        {
+            shoppingCart[i] = blShoppingCart.Items[i].Text;
+        }
         Product product = new Product();//Each product becomes a product object
-        string[] productAndPrice = new string[2];
+        string[] productPriceAndQuantity = new string[3];
         foreach (string value in shoppingCart)
         {
-            productAndPrice = value.Split(' ');
-            product.productName = productAndPrice[0];
-            product.pricePerSellableUnit = Convert.ToDouble(productAndPrice[1]);
-            product.quantity = 1;
+            productPriceAndQuantity = value.Split('$', 'x');
+            product.productName = productPriceAndQuantity[0].TrimEnd();
+            product.pricePerSellableUnit = Convert.ToDouble(productPriceAndQuantity[1]);
+            product.quantity = Convert.ToInt16(productPriceAndQuantity[2]);
             products.Add(product);
-            Array.Clear(productAndPrice, 0, 2);
+            Array.Clear(productPriceAndQuantity, 0, 3);
         }
         Order order = new Order();
         order = (Order)Session["order"];
         order.products = products;
         Session["order"] = order;
-        Response.Redirect("Order.aspx");
-        */
+        Response.Redirect("FinalOrder.aspx");
     }
 }
