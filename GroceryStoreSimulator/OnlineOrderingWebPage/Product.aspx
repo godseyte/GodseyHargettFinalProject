@@ -30,7 +30,7 @@
                     <!--PricePerSellableUnit:-->
                     <asp:Label ID="PricePerSellableUnitLabel" runat="server" Text='<%# Eval("PricePerSellableUnit") %>' />
                     <br />
-                    <asp:TextBox ID="tbQuantity" runat="server" style="width:22px; height: 22px"></asp:TextBox>
+                    <!--<asp:TextBox ID="tbQuantity" runat="server" style="width:22px; height: 22px"></asp:TextBox>-->
                 </td>
             </AlternatingItemTemplate>
             <EditItemTemplate>

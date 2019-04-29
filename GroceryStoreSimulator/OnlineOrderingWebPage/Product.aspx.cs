@@ -32,6 +32,9 @@ public partial class Default2 : System.Web.UI.Page
         //grab the name of the store that is clicked
         string pricePerSellableUnit = ConvertToCurrency(lvProductsFromSelectedStore.DataKeys[lvProductsFromSelectedStore.SelectedIndex].Values["PricePerSellableUnit"].ToString());
         //create a listItem that can be added to an html control
+        TextBox tbQuantity = new TextBox();
+        tbQuantity.Style.Add("width", "22px");
+        tbQuantity.Style.Add("heigth", "22px");
         ListItem shopingList = new ListItem(lvProductsFromSelectedStore.SelectedValue.ToString() + " " + pricePerSellableUnit);
         blShoppingCart.Items.Add(shopingList);//add to the shopping cart list on the html page
     }
