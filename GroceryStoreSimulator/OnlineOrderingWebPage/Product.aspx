@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderPlaceholder" Runat="Server">
     Products - <asp:Label ID="lblStoreName" runat="server" Text=""></asp:Label>
+    <asp:Label ID="lblLoyaltyLogin" runat="server" Text="" style="float: right;"></asp:Label>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceholder" Runat="Server">

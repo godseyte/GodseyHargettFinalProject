@@ -18,12 +18,11 @@ public partial class Default2 : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //dsProductsFromSelectedStore.Select("");
         Order order = new Order();
         order = (Order)Session["order"];
         lblStoreName.Text = order.store.storeName;
+        lblLoyaltyLogin.Text = order.login.login;
         string storeName = lblStoreName.Text.Trim();
-        //dsProductsFromSelectedStore.SelectParameters.Add("StoreName", DbType.String, storeName);
     }
 
     //This method is triggerd whenever an item is clicked in the listview we will use
