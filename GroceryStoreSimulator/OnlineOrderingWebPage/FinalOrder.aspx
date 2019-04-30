@@ -19,13 +19,7 @@
 
                 <asp:TableHeaderRow>
                     <asp:TableHeaderCell><h5>Item</h5></asp:TableHeaderCell>
-                </asp:TableHeaderRow>
-
-                <asp:TableHeaderRow>
                     <asp:TableHeaderCell><h5>Quantity</h5></asp:TableHeaderCell>
-                </asp:TableHeaderRow>
-
-                <asp:TableHeaderRow>
                     <asp:TableHeaderCell><h5>Price</h5></asp:TableHeaderCell>
                 </asp:TableHeaderRow>
 

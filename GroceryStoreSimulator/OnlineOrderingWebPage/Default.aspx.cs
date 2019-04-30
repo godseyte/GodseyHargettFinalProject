@@ -90,9 +90,58 @@ public partial class _Default : System.Web.UI.Page
             lblError.Visible = true;
         }
 
+    }
 
-        // Create new Login object
-        Login newLogin = new Login(txtLoyaltyNumberInput.Text, false);
+    // Employee Login
+    protected void btnLoginEmployee_Click(object sender, EventArgs e)
+    {
+        // Gather the input data and use it to create an Order server object.
+
+        // Trim input value and save it to a variable
+        string inputEmployee = txtEmployeeNumber.Text.Trim();
+
+        // Verify the Employee exists
+        if (inputEmployee != "")
+        {
+            //TODO: Check the database for the Employee Number
+            DataTable returnedData = QueryGroceryStoreSimulator.QueryGroceryStoreSimulatorDataTable("SELECT Empl FROM tEmpl WHERE Empl = '" + inputEmployee + "'");
+
+            // Check the DataTable to see if the Employee is in it
+            if (returnedData.Rows.Count > 0)
+            {
+                if (returnedData.Rows[0][0].ToString().Trim() == inputEmployee)
+                {
+                    // Create the login for the session order
+                    Order order = new Order();
+                    order = (Order)Session["order"];
+                    order.login = new Login(inputEmployee, true);
+                    Session["order"] = order;
+
+                    // Redirect to Employee page
+                    Response.Redirect("http://localhost:41711/Employee.aspx");
+
+
+                }
+                else
+                {
+                    // Show Incorrect Employee Error
+                    lblEmpError.Text = "Incorrect Employee Login";
+                    lblEmpError.Visible = true;
+                }
+            }
+            else
+            {
+                // Show Incorrect Loyalty Error
+                lblEmpError.Text = "Incorrect Employee Login";
+                lblEmpError.Visible = true;
+            }
+        }
+        else
+        {
+            // Show Empty Employee Error
+            lblEmpError.Text = "Please Input a Employee Login";
+            lblEmpError.Visible = true;
+        }
 
     }
 }

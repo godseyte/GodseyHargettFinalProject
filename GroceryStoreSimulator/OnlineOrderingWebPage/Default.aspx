@@ -69,8 +69,9 @@ INNER JOIN tProductPriceHist as pph ON pph.StoreID = s.StoreID"></asp:SqlDataSou
                 </div>
                 
                 <br />
-                <asp:Button ID="btnLoginEmployee" runat="server" Text="Login" CssClass="btn btn-primary" />
-
+                <asp:Button ID="btnLoginEmployee" runat="server" Text="Login" CssClass="btn btn-primary" OnClick="btnLoginEmployee_Click" />
+                <br />
+                <asp:Label ID="lblEmpError" runat="server" Text="ERROR MESSAGE HERE" Visible="False" CssClass="text-danger"></asp:Label>
             </div>
 
 
