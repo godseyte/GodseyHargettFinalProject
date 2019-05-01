@@ -15,13 +15,18 @@ public partial class FinalOrder : System.Web.UI.Page
             // Create a new Order and attach it to the session order
             Order order = new Order();
             order = (Order)Session["order"];
-            
+
+            for (int i = 0; order.products.Count > i; i++)
+            {
+                Response.Write(order.products[i].productName + " - ");
+            }
+
             // Change Header Texts
             lblLoyaltyNumberHeader.Text = order.login.login;
             lblLoyaltyNumberCardHead.Text = order.login.login;
 
             // Test add a new product
-            order.products.Add(new Product("Bagel", 0.99, 2));
+            //order.products.Add(new Product("Bagel", 0.99, 2));
 
             // Create Row and Cell variables to hold our product info
             TableRow newRow = new TableRow();
@@ -30,7 +35,7 @@ public partial class FinalOrder : System.Web.UI.Page
             TableCell cellPrice = new TableCell();
 
             // Loop through the products and attach the information to the cells, add cells to the row, and add row to the table
-            for (int i = 0;  order.products.Count >= i; i++)
+            for (int i = 0;  order.products.Count > i; i++)
             {
                 // Attach info to Cells
                 cellItem.Text = order.products[i].productName;
