@@ -20,11 +20,9 @@ public partial class FinalOrder : System.Web.UI.Page
         // Create a double to hold the cost of the product multiplied by the quantity
         double itemTotalPrice = 0;
 
-        // Print object ordered at top of page for testing reasons
-        for (int i = 0; order.products.Count > i; i++)
-        {
-            Response.Write(order.products[i].productName + " - ");
-        }
+        // Change order number and store name labels
+        lblOrderNumber.Text = "TEST ORDER NUMBER";
+        lblStoreName.Text = order.store.storeName;
 
         // Change Header Texts
         lblLoyaltyNumberHeader.Text = order.login.login;

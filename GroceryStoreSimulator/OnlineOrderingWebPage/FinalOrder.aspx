@@ -13,7 +13,12 @@
 
         <div class="card-body">
             
-            <h4>Products</h4>
+            <h4>Order Details</h4>
+
+            <h5>Your order number is <b><asp:Label ID="lblOrderNumber" runat="server" Text=""></asp:Label></b></h5>
+            <h5>You purchased from <b><asp:Label ID="lblStoreName" runat="server" Text=""></asp:Label></b></h5>
+
+            <h4>Products Ordered</h4>
 
             <asp:Table ID="tblProducts" CssClass="table table-bordered table-active" runat="server">
 
@@ -25,7 +30,7 @@
 
             </asp:Table>
 
-            <asp:Table ID="Table1" CssClass="table table-bordered table-active" runat="server">
+            <asp:Table ID="tblTotalCost" CssClass="table table-bordered table-active" runat="server">
 
                 <asp:TableHeaderRow>
                     <asp:TableHeaderCell CssClass=""><h5>Total Price</h5></asp:TableHeaderCell>
