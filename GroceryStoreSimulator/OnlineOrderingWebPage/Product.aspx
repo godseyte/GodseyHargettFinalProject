@@ -1,13 +1,21 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Product.aspx.cs" Inherits="Default2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderPlaceholder" Runat="Server">
+<!--
+ * Alex Hargett
+ * Final Assignment
+ * Due 5/1/2019
+ * Web Server Application Development IT3047 001
+ * 
+ * Shopping Cart
+-->
     Products - <asp:Label ID="lblStoreName" runat="server" Text=""></asp:Label>
     <asp:Label ID="lblLoyaltyLogin" runat="server" Text="" style="float: right;"></asp:Label>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceholder" Runat="Server">
     <!--Table to hold all the products for a store-->
-    <div class="table-bordered" style="position: relative; width: 75%; float: left; display: inline-block; right: -3%;">
+    <div class="table-borderless" style="position: relative; width: 75%; float: left; display: inline-block; right: -3%;">
         <asp:ListView ID="lvProductsFromSelectedStore" runat="server" DataSourceID="dsProductsFromSelectedStore" GroupItemCount="5" 
             DataKeyNames="Name, PricePerSellableUnit" OnItemDataBound="lvProductsFromSelectedStore_ItemDataBound" OnItemCommand="lvProductsFromSelectedStore_OnItemCommand">
             <AlternatingItemTemplate>
@@ -20,7 +28,7 @@
                     <!--PricePerSellableUnit:-->
                     <asp:Label ID="PricePerSellableUnitLabel" runat="server" Text='<%# Eval("PricePerSellableUnit") %>' style=""/>
                     <br />
-                    <asp:TextBox ID="txtQuantity" runat="server" Text="1" style="width:22px; height:22px;"></asp:TextBox>
+                    <asp:TextBox ID="txtQuantity" runat="server" Text="1" CssClass="form-control-sm" style="width:45px; height:35px; margin: 0 auto;"></asp:TextBox>
                     <!--<asp:Button ID="Button1" runat="server" Text="" Style="display: inline-block; align-self: center; width:100%; height: 100%"/>-->
                 </td>
             </AlternatingItemTemplate>
@@ -81,14 +89,14 @@
                     <!--PricePerSellableUnit:-->
                     <asp:Label ID="PricePerSellableUnitLabel" runat="server" Text='<%# Eval("PricePerSellableUnit") %>' style=""/>
                     <br />
-                    <asp:TextBox ID="txtQuantity" runat="server" Text="1" style="width:22px; height:22px;"></asp:TextBox>
+                    <asp:TextBox ID="txtQuantity" runat="server" Text="1" CssClass="form-control-sm" style="width:45px; height:35px; margin: 0 auto;"></asp:TextBox>
                 </td>
             </ItemTemplate>
             <LayoutTemplate>
                 <table runat="server">
                     <tr runat="server">
                         <td runat="server">
-                            <table id="groupPlaceholderContainer" runat="server" border="0" style="width: 100%; height: 500px;table-layout: fixed">
+                            <table id="groupPlaceholderContainer" runat="server" border="0" style="width: 100%; height: 500px;table-layout: fixed;">
                                 <tr id="groupPlaceholder" runat="server">
                                 </tr>
                             </table>
@@ -117,7 +125,7 @@
                     <!--PricePerSellableUnit:-->
                     <asp:Label ID="PricePerSellableUnitLabel" runat="server" Text='<%# Eval("PricePerSellableUnit") %>' style=""/>
                     <br />
-                    <asp:TextBox ID="txtQuantity" runat="server" Text="1" style="width:22px; height:22px;"></asp:TextBox>
+                    <asp:TextBox ID="txtQuantity" runat="server" Text="1" CssClass="form-control-sm" style="width:45px; height:35px; margin: 0 auto;"></asp:TextBox>
                 </td>
             </SelectedItemTemplate>
         </asp:ListView>

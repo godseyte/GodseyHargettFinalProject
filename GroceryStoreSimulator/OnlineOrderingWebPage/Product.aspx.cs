@@ -39,13 +39,13 @@ public partial class Default2 : System.Web.UI.Page
 
     protected void lvProductsFromSelectedStore_OnItemCommand(object sender, ListViewCommandEventArgs e)
     {
-        Button btnProductName = (Button)e.Item.FindControl("btnSelect");
-        Label lblProductName = new Label();
-        lblProductName.Text = btnProductName.Text;
+        Button btnName = (Button)e.Item.FindControl("btnSelect");
+        string productName = btnName.Text;
+        Label lblProductBrand = (Label)e.Item.FindControl("BrandLabel");
         Label lblPricePerSellableUnit = (Label)e.Item.FindControl("PricePerSellableUnitLabel");
         TextBox txtQuantity = (TextBox)e.Item.FindControl("txtQuantity");
 
-        string shopingList = lblProductName.Text + " " + lblPricePerSellableUnit.Text + " x" + txtQuantity.Text;
+        string shopingList = productName + " - " + lblProductBrand.Text + " " + lblPricePerSellableUnit.Text + " x" + txtQuantity.Text;
         blShoppingCart.Items.Add(shopingList);//add to the shopping cart list on the html page
     }
 
