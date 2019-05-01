@@ -15,15 +15,17 @@
             
             <h4>Products</h4>
 
-            <asp:Table ID="tblProducts" CssClass="table-dark" runat="server">
+            <asp:Table ID="tblProducts" CssClass="table table-bordered table-active" runat="server">
 
                 <asp:TableHeaderRow>
-                    <asp:TableHeaderCell><h5>Item</h5></asp:TableHeaderCell>
+                    <asp:TableHeaderCell CssClass=""><h5>Item</h5></asp:TableHeaderCell>
                     <asp:TableHeaderCell><h5>Quantity</h5></asp:TableHeaderCell>
                     <asp:TableHeaderCell><h5>Price</h5></asp:TableHeaderCell>
                 </asp:TableHeaderRow>
 
             </asp:Table>
+
+            
 
         </div>
 

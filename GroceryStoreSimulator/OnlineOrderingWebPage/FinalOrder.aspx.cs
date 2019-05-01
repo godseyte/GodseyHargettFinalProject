@@ -27,8 +27,8 @@ public partial class FinalOrder : System.Web.UI.Page
             lblLoyaltyNumberCardHead.Text = order.login.login;
 
             // Test add a new product
-            //order.products.Add(new Product("Bagel", 0.99, 2));
-            //order.products.Add(new Product("Goal", 2000.00, 90));
+            order.products.Add(new Product("Bagel", 0.99, 2));
+            order.products.Add(new Product("Goal", 2000.00, 90));
 
             // Create Row and Cell variables to hold our product info
             //TableRow newRow = new TableRow();
@@ -44,7 +44,7 @@ public partial class FinalOrder : System.Web.UI.Page
                 // Attach info to Cells
                 cellItem.Text = order.products[i].productName;
                 cellQuantity.Text = order.products[i].quantity.ToString();
-                cellPrice.Text = order.products[i].pricePerSellableUnit.ToString();
+                cellPrice.Text = (order.products[i].pricePerSellableUnit * order.products[i].quantity).ToString(); // Multiply the price by the quantity
 
                 // Attach cells to row
                 newRow.Cells.Add(cellItem);
@@ -57,7 +57,8 @@ public partial class FinalOrder : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            lblLoyaltyNumberHeader.Text = "Ruh Roh Raggy n/" + ex;
+            // Show the error somewhere where I can see it
+            lblLoyaltyNumberHeader.Text = ex.ToString();
         }
         
         
