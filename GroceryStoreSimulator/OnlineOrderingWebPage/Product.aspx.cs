@@ -20,6 +20,7 @@ public partial class Default2 : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        //Add astetic text to the header
         Order order = new Order();
         order = (Order)Session["order"];
         lblStoreName.Text = order.store.storeName;
@@ -90,6 +91,7 @@ public partial class Default2 : System.Web.UI.Page
         string pricePerSellableUnit = rowView["PricePerSellableUnit"].ToString();
     }
 
+    //Runs on button click within the tile that product is in
     protected void lvProductsFromSelectedStore_OnItemCommand(object sender, ListViewCommandEventArgs e)
     {
         Button btnName = (Button)e.Item.FindControl("btnSelect");
@@ -127,11 +129,13 @@ public partial class Default2 : System.Web.UI.Page
         int count = 0;
         foreach (string value in shoppingCart)
         { 
+            //The string is broken into its parts for name, price, and quantity
             productPriceAndQuantity = value.Split('$', 'x');
             productsArray[count] = product(productPriceAndQuantity[0], productPriceAndQuantity[1], productPriceAndQuantity[2]);
             Array.Clear(productPriceAndQuantity, 0, 3);
             count = count + 1;
         }
+        //Add the list to the order session
         products = productsArray.ToList<Product>();
         Order order = new Order();
         order = (Order)Session["order"];
@@ -145,6 +149,7 @@ public partial class Default2 : System.Web.UI.Page
         Response.Redirect("FinalOrder.aspx");
     }
 
+    //Creates each indiviual product object
     public Product product(string productName, string pricePerSellableUnit, string quantity)
     {
         Product product = new Product();
