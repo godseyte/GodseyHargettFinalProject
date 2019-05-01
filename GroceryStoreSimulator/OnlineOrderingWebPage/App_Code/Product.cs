@@ -18,7 +18,7 @@ public class Product
 {
     // Properties
     private string mProductName; //The name of the product
-    private string mProductBrand
+    private string mProductBrand;
     private double mPricePerSellableUnit; //The price of the product
     private int mQuantity; //The amount of said item
 
