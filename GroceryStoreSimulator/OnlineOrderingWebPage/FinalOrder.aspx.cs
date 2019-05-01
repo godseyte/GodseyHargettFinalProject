@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+ * Alex Hargett
+ * Final Assignment
+ * Due 5/1/2019
+ * Web Server Application Development IT3047 001
+ * 
+ * Display Final Order
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -21,7 +29,7 @@ public partial class FinalOrder : System.Web.UI.Page
         double itemTotalPrice = 0;
 
         // Change order number and store name labels
-        lblOrderNumber.Text = "TEST ORDER NUMBER";
+        lblOrderNumber.Text = order.orderNumber;
         lblStoreName.Text = order.store.storeName;
 
         // Change Header Texts

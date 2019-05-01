@@ -27,9 +27,6 @@ public static class QueryGroceryStoreSimulator
 
         cnn.Open();
 
-        // Create a SqlDataReader and tie it to the query
-        //SqlDataReader reader = command.ExecuteReader();
-
         // Create a DataTable to store all data and a SqlDataAdapter to fill the DataTable
         DataTable dataTable = new DataTable();
 

@@ -8,7 +8,9 @@
  */
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -23,6 +25,57 @@ public partial class Default2 : System.Web.UI.Page
         lblStoreName.Text = order.store.storeName;
         lblLoyaltyLogin.Text = order.login.login;
         string storeName = lblStoreName.Text.Trim();
+
+        
+    }
+
+    public void CreateOrderOnDatabase(Order order)
+    {
+        // Create new SqlConnection using ConnectionString in Web.Config
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["GroceryStoreSimulatorConnectionString"].ConnectionString);
+
+        // Create new SqlCommand
+        SqlCommand comm = new SqlCommand("spAddOrder", conn);
+
+        // Set command type to stored procedure
+        comm.CommandType = CommandType.StoredProcedure;
+
+        // Create new DataTable for our Query and query it for the loyaltyID
+        DataTable dt = new DataTable();
+        dt = QueryGroceryStoreSimulator.QueryGroceryStoreSimulatorDataTable(("SELECT LoyaltyID FROM tLoyalty WHERE LoyaltyNumber = '" + order.login.login + "'"));
+
+        // Create loyaltyID and set it to the returned loyaltyID
+        string loyaltyID = dt.Rows[0][0].ToString();
+
+        // Get StoreID
+        dt = QueryGroceryStoreSimulator.QueryGroceryStoreSimulatorDataTable(("SELECT StoreID FROM tStore WHERE Store = '" + order.store.storeName + "'"));
+        string storeID = dt.Rows[0][0].ToString();
+
+        // Add params to command
+        comm.Parameters.Add("@OrderID", SqlDbType.Int).Direction = ParameterDirection.Output;
+        comm.Parameters.Add("@LoyaltyID", SqlDbType.Int).Value = loyaltyID;
+        comm.Parameters.Add("@StoreID", SqlDbType.Int).Value = storeID;
+        comm.Parameters.Add("@DeliveryCharge", SqlDbType.Int).Value = 0;
+        comm.Parameters.Add("@OrderStatusID", SqlDbType.Int).Value = 1;
+        
+        
+        // Create return variable
+        //var returnParam = comm.Parameters.Add("@OrderID", SqlDbType.Int);
+        //returnParam
+
+        // Open Connection
+        conn.Open();
+
+        // Run command and save the OrderNumber
+        comm.ExecuteNonQuery();
+        order.orderNumber = comm.Parameters["@OrderID"].Value.ToString();
+
+        // Close Connection
+        conn.Close();
+
+        
+
+        
     }
 
     //This method allows you to alter the data gathered by the datasource before it is presented
@@ -84,6 +137,11 @@ public partial class Default2 : System.Web.UI.Page
         order = (Order)Session["order"];
         order.products = products;
         Session["order"] = order;
+
+        // Create an order on the database
+        CreateOrderOnDatabase(order);
+
+        // Go to FinalOrder page
         Response.Redirect("FinalOrder.aspx");
     }
 
@@ -92,7 +150,7 @@ public partial class Default2 : System.Web.UI.Page
         Product product = new Product();
         product.productName = productName.Trim();
         product.pricePerSellableUnit = Convert.ToDouble(pricePerSellableUnit);
-        product.quantity = Convert.ToInt16(quantity);
+        product.quantity = Convert.ToInt32(quantity);
 
         return product;
     }
