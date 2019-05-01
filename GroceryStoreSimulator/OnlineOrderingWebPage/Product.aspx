@@ -15,7 +15,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceholder" Runat="Server">
     <!--Table to hold all the products for a store-->
-    <div class="table-borderless" style="position: relative; width: 75%; float: left; display: inline-block; right: -3%;">
+    <div class="table-bordered table-light" style="position: relative; width: 75%; float: left; display: inline-block; right: -3%;">
         <asp:ListView ID="lvProductsFromSelectedStore" runat="server" DataSourceID="dsProductsFromSelectedStore" GroupItemCount="5" 
             DataKeyNames="Name, PricePerSellableUnit" OnItemDataBound="lvProductsFromSelectedStore_ItemDataBound" OnItemCommand="lvProductsFromSelectedStore_OnItemCommand">
             <AlternatingItemTemplate>
@@ -138,11 +138,11 @@
         <asp:Button ID="btnCheckout" runat="server" Text="Checkout" CssClass="btn-primary" Style="display:table-cell; position:absolute; bottom: 10px; left: 25%; width: 50%; height: 30px;" OnClick="btnCheckout_Click"/>
     </div>
     <!--DataSource that uses a select statement to grab all products from the selected store-->
-    <asp:SqlDataSource ID="dsProductsFromSelectedStore" runat="server" ConnectionString="<%$ ConnectionStrings:GroceryStoreSimulatorConnectionString %>" SelectCommand="SELECT DISTINCT [Name], [Brand],  [PricePerSellableUnit] FROM [vProductInfo] 
+    <asp:SqlDataSource ID="dsProductsFromSelectedStore" runat="server" ConnectionString="<%$ ConnectionStrings:GroceryStoreSimulatorConnectionString %>" SelectCommand="SELECT DISTINCT [Name], [Brand],  [PricePerSellableUnit], [DateTimeStamp] FROM [vProductInfo] 
 INNER JOIN [tProductPriceHist] ON [tProductPriceHist].[ProductID] = [vProductInfo].ProductID
-INNER JOIN [tStore] ON [tStore].[StoreID] = [tProductPriceHist].[StoreID] WHERE Store = @StoreName;">
+INNER JOIN [tStore] ON [tStore].[StoreID] = [tProductPriceHist].[StoreID] WHERE Store = @StoreName ORDER BY DateTimeStamp;">
         <SelectParameters>
-            <asp:ControlParameter ControlID="HeaderPlaceHolder$lblStoreName" DefaultValue="Batavia" Name="StoreName" PropertyName="Text" />
+            <asp:ControlParameter ControlID="HeaderPlaceholder$lblStoreName" DefaultValue="" Name="StoreName" PropertyName="Text" />
         </SelectParameters>
     </asp:SqlDataSource>
 </asp:Content>
