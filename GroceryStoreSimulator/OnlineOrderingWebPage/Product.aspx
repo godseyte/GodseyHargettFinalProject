@@ -8,7 +8,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceholder" Runat="Server">
     <!--Table to hold all the products for a store-->
     <div class="table-bordered" style="position: relative; width: 75%; float: left; display: inline-block; right: -3%;">
-        <asp:ListView ID="lvProductsFromSelectedStore" runat="server" DataSourceID="dsProductsFromSelectedStore" GroupItemCount="5" OnSelectedIndexChanged="lvProductsFromSelectedStore_SelectedIndexChanged" 
+        <asp:ListView ID="lvProductsFromSelectedStore" runat="server" DataSourceID="dsProductsFromSelectedStore" GroupItemCount="5" 
             DataKeyNames="Name, PricePerSellableUnit" OnItemDataBound="lvProductsFromSelectedStore_ItemDataBound" OnItemCommand="lvProductsFromSelectedStore_OnItemCommand">
             <AlternatingItemTemplate>
                 <td runat="server" style="text-align: center;"><!--Name-->
