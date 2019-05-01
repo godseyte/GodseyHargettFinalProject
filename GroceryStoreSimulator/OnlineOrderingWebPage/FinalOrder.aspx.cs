@@ -9,65 +9,50 @@ public partial class FinalOrder : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        // Temporary Testing
-        try
+
+        // Create a new Order and attach it to the session order
+        Order order = new Order();
+        order = (Order)Session["order"];
+
+        // Create a double for the total price of the order
+        double totalPrice = 0;
+
+        // Create a double to hold the cost of the product multiplied by the quantity
+        double itemTotalPrice = 0;
+
+        // Print object ordered at top of page for testing reasons
+        for (int i = 0; order.products.Count > i; i++)
         {
-            // Create a new Order and attach it to the session order
-            Order order = new Order();
-            order = (Order)Session["order"];
-
-            // Print object ordered at top of page for testing reasons
-            for (int i = 0; order.products.Count > i; i++)
-            {
-                Response.Write(order.products[i].productName + " - ");
-            }
-
-            // Change Header Texts
-            lblLoyaltyNumberHeader.Text = order.login.login;
-            lblLoyaltyNumberCardHead.Text = order.login.login;
-
-            // Test add a new product
-            order.products.Add(new Product("Bagel", 0.99, 2));
-            order.products.Add(new Product("Goal", 2000.00, 90));
-
-            // Create Row and Cell variables to hold our product info
-            //TableRow newRow = new TableRow();
-            //TableCell cellItem = new TableCell();
-            //TableCell cellQuantity = new TableCell();
-            //TableCell cellPrice = new TableCell();
-
-            // Loop through the products and attach the information to the cells, add cells to the row, and add row to the table
-            for (int i = 0;  order.products.Count > i; i++)
-            {
-                /*// Reset newRow so it does not contain any items
-                newRow = new TableRow();
-
-                // Attach info to Cells
-                cellItem.Text = order.products[i].productName;
-                cellQuantity.Text = order.products[i].quantity.ToString();
-                cellPrice.Text = (order.products[i].pricePerSellableUnit * order.products[i].quantity).ToString(); // Multiply the price by the quantity
-
-                // Attach cells to row
-                newRow.Cells.Add(cellItem);
-                newRow.Cells.Add(cellQuantity);
-                newRow.Cells.Add(cellPrice);
-
-                // Add row to Table
-                tblProducts.Rows.Add(newRow);
-                */
-                AddRowToProductTable(order.products[i].productName, order.products[i].quantity, order.products[i].pricePerSellableUnit);
-            }
+            Response.Write(order.products[i].productName + " - ");
         }
-        catch (Exception ex)
+
+        // Change Header Texts
+        lblLoyaltyNumberHeader.Text = order.login.login;
+        lblLoyaltyNumberCardHead.Text = order.login.login;
+
+        // Loop through the products and attach the information to the cells, add cells to the row, and add row to the table. Add cost to total price
+        for (int i = 0; order.products.Count > i; i++)
         {
-            // Show the error somewhere where I can see it
-            lblLoyaltyNumberHeader.Text = ex.ToString();
+            // Reset itemTotalPrice
+            itemTotalPrice = 0;
+
+            // Multiple an items cost by its quantity
+            itemTotalPrice = (order.products[i].quantity * order.products[i].pricePerSellableUnit);
+
+            // Add the items total price to the total price of the order
+            totalPrice += itemTotalPrice;
+
+            // use AddRowToProductTable to add a row to the Product Table
+            AddRowToProductTable(order.products[i].productName, order.products[i].quantity, itemTotalPrice);
         }
-        
-        
+
+        // Change the total cost label to the total cost of the order
+        lblTotalCost.Text = "$" + totalPrice.ToString();
+
+
     }
 
-    public void AddRowToProductTable(string itemName, int itemQuantity, double itemCost)
+    public void AddRowToProductTable(string itemName, int itemQuantity, double itemTotalCost)
     {
         // Rows and Cells
         TableRow newRow = new TableRow();
@@ -78,7 +63,7 @@ public partial class FinalOrder : System.Web.UI.Page
         // Add data to cells
         cellItem.Text = itemName;
         cellQuantity.Text = itemQuantity.ToString();
-        cellPrice.Text = (itemCost * itemQuantity).ToString();
+        cellPrice.Text = itemTotalCost.ToString(); // Multiply Cost by Quantity
 
         // Add cells to row
         newRow.Cells.Add(cellItem);

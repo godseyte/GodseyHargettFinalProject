@@ -25,7 +25,14 @@
 
             </asp:Table>
 
-            
+            <asp:Table ID="Table1" CssClass="table table-bordered table-active" runat="server">
+
+                <asp:TableHeaderRow>
+                    <asp:TableHeaderCell CssClass=""><h5>Total Price</h5></asp:TableHeaderCell>
+                    <asp:TableCell><asp:Label ID="lblTotalCost" runat="server" Text=""></asp:Label></asp:TableCell>
+                </asp:TableHeaderRow>
+
+            </asp:Table>
 
         </div>
 
