@@ -32,14 +32,15 @@ public partial class FinalOrder : System.Web.UI.Page
 
             // Create Row and Cell variables to hold our product info
             //TableRow newRow = new TableRow();
-            TableCell cellItem = new TableCell();
-            TableCell cellQuantity = new TableCell();
-            TableCell cellPrice = new TableCell();
+            //TableCell cellItem = new TableCell();
+            //TableCell cellQuantity = new TableCell();
+            //TableCell cellPrice = new TableCell();
 
             // Loop through the products and attach the information to the cells, add cells to the row, and add row to the table
             for (int i = 0;  order.products.Count > i; i++)
             {
-                TableRow newRow = new TableRow();
+                /*// Reset newRow so it does not contain any items
+                newRow = new TableRow();
 
                 // Attach info to Cells
                 cellItem.Text = order.products[i].productName;
@@ -53,6 +54,8 @@ public partial class FinalOrder : System.Web.UI.Page
 
                 // Add row to Table
                 tblProducts.Rows.Add(newRow);
+                */
+                AddRowToProductTable(order.products[i].productName, order.products[i].quantity, order.products[i].pricePerSellableUnit);
             }
         }
         catch (Exception ex)
@@ -62,5 +65,27 @@ public partial class FinalOrder : System.Web.UI.Page
         }
         
         
+    }
+
+    public void AddRowToProductTable(string itemName, int itemQuantity, double itemCost)
+    {
+        // Rows and Cells
+        TableRow newRow = new TableRow();
+        TableCell cellItem = new TableCell();
+        TableCell cellQuantity = new TableCell();
+        TableCell cellPrice = new TableCell();
+
+        // Add data to cells
+        cellItem.Text = itemName;
+        cellQuantity.Text = itemQuantity.ToString();
+        cellPrice.Text = (itemCost * itemQuantity).ToString();
+
+        // Add cells to row
+        newRow.Cells.Add(cellItem);
+        newRow.Cells.Add(cellQuantity);
+        newRow.Cells.Add(cellPrice);
+
+        // Add row to table
+        tblProducts.Rows.Add(newRow);
     }
 }
