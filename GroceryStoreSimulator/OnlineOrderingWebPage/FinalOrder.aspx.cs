@@ -16,6 +16,7 @@ public partial class FinalOrder : System.Web.UI.Page
             Order order = new Order();
             order = (Order)Session["order"];
 
+            // Print object ordered at top of page for testing reasons
             for (int i = 0; order.products.Count > i; i++)
             {
                 Response.Write(order.products[i].productName + " - ");
@@ -27,9 +28,10 @@ public partial class FinalOrder : System.Web.UI.Page
 
             // Test add a new product
             //order.products.Add(new Product("Bagel", 0.99, 2));
+            //order.products.Add(new Product("Goal", 2000.00, 90));
 
             // Create Row and Cell variables to hold our product info
-            TableRow newRow = new TableRow();
+            //TableRow newRow = new TableRow();
             TableCell cellItem = new TableCell();
             TableCell cellQuantity = new TableCell();
             TableCell cellPrice = new TableCell();
@@ -37,6 +39,8 @@ public partial class FinalOrder : System.Web.UI.Page
             // Loop through the products and attach the information to the cells, add cells to the row, and add row to the table
             for (int i = 0;  order.products.Count > i; i++)
             {
+                TableRow newRow = new TableRow();
+
                 // Attach info to Cells
                 cellItem.Text = order.products[i].productName;
                 cellQuantity.Text = order.products[i].quantity.ToString();
